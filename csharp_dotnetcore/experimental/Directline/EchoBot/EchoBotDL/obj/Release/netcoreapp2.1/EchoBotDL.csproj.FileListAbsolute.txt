@@ -1,0 +1,15 @@
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\appsettings.json
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\EchoBotDL.deps.json
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\EchoBotDL.runtimeconfig.json
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\EchoBotDL.runtimeconfig.dev.json
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\EchoBotDL.dll
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\bin\Release\netcoreapp2.1\EchoBotDL.pdb
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.csprojAssemblyReference.cache
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.csproj.CoreCompileInputs.cache
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.RazorAssemblyInfo.cache
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.RazorAssemblyInfo.cs
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.AssemblyInfoInputs.cache
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.AssemblyInfo.cs
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.RazorTargetAssemblyInfo.cache
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.dll
+C:\Users\v-mimiel\aWork\GitHub\MyBotSamples\DirectLine\EchoBotDL\EchoBotDL\obj\Release\netcoreapp2.1\EchoBotDL.pdb

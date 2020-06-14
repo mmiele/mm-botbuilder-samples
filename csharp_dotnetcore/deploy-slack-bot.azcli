@@ -1,0 +1,35 @@
+# Deply simple echo bot
+
+# Log into the Azure portal
+az login
+
+# Set subscription
+az account set --subscription "FUSE Temporary"
+
+# Create an AD application.
+# This step creates a bot channels registration application.
+# Copy the app id obtained and the password you entered to use in the next step.
+az ad app create --display-name "SlackEchoBot" --password "@mm-slack-bot-22499" --available-to-other-tenants
+
+# Create a deployment from a template file, using parameters from a local JSON file.
+# You can verify that both the bot service registration and the bot service application are in the Azure portal.
+# Copy the subscription id obtained to use in the next step. This is the numneric value in "id::/subscription/numeric value/....
+# New plan
+az deployment create --name "SlackEchoBot" --template-file "02.echo-bot\DeploymentTemplates\template-with-new-rg.json" --location "westus2" --parameters appId="7b7cfa41-5729-44b4-afdd-12a8fc4f12f0" appSecret="@mm-slack-bot-22499" botId="SlackEchoBot" botSku=F0 newAppServicePlanName="mm-bot-service-plan" newWebAppName="SlackEchoBot" groupName="mm-bot-resource-group" groupLocation="westus2" newAppServicePlanLocation="westus2"
+
+# Existing plan
+# az group deployment create --name "SlackEchoBot" --resource-group "mm-bot-resource-group" --template-file "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-Samples\samples\csharp_dotnetcore\18.bot-authentication\DeploymentTemplates\template-with-preexisting-rg.json" --parameters appId="d1face91-9e3d-44b8-bc63-f42dcd2cebee" appSecret="@mm-slack-bot-22499" botId="SlackEchoBot" newWebAppName="SlackEchoBot" existingAppServicePlan="mm-bot-service-plan" appServicePlanLocation="westus2"
+
+# Optionally, check app Id and password.
+# Use the app id and the secret values in the appsettings.json file.
+az webapp config appsettings list -g mm-bot-resource-group -n SlackEchoBot --subscription 174c5021-8109-4087-a3e2-a1de20420569
+
+
+# Create a .deployment file within the bot project folder:
+az bot prepare-deploy --lang Csharp --code-dir "02.echo-bot\" --proj-file-path "EchoBot.csproj"
+
+# Add the the bot channel registration app id, client secret and the name of the connection to the `appsettings.json` file.
+# In the project directory zip up all the files and folders. This produces an <name>.zip. file.
+# Deploy the bot
+az webapp deployment source config-zip --resource-group "mm-bot-resource-group" --name "SlackEchoBot" --src "02.echo-bot\bot.zip"
+

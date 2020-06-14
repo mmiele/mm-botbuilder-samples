@@ -1,0 +1,35 @@
+# Deply simple aithenticated echo bot
+
+# Log into Azure portal
+az login
+
+# Set subscription
+az account set --subscription "FUSE Temporary"
+
+# Create a bot channels registration.
+# Copy the app id obtained and the password you entered to use in the next step.
+az ad app create --display-name "EchoBotMM" --password "@mm-echo-bot-22499" --available-to-other-tenants
+
+# Set the deployment using ARM template, service plan and resource group.
+# This step creates a bot service application.
+# You can verify that both the bot service registration and the bot service application are in the Azure portal.
+# Copy the subscription id obtained to use in the next step. This is the numneric value in "id::/subscription/numeric value/....
+# New plan
+az deployment create --name "EchoBotMM" --template-file "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\02.echo-bot\DeploymentTemplates\template-with-new-rg.json" --location "westus2" --parameters appId="9f3f2e82-3616-460f-94a4-be03f2f5dc65" appSecret="@mm-echo-bot-22499" botId="EchoBotMM" botSku=F0 newAppServicePlanName="mm-bot-service-plan" newWebAppName="EchoBotMM" groupName="mm-bot-resource-group" groupLocation="westus2" newAppServicePlanLocation="westus2"
+
+# Existing plan
+# az group deployment create --name "EchoBotMM" --resource-group "mm-bot-resource-group" --template-file "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-Samples\samples\csharp_dotnetcore\02-echo-.bot\DeploymentTemplates\template-with-preexisting-rg.json" --parameters appId="d1face91-9e3d-44b8-bc63-f42dcd2cebee" appSecret="@mm-echo-bot-22499" botId="EchoBotMM" newWebAppName="EchoBotMM" existingAppServicePlan="mm-bot-service-plan" appServicePlanLocation="westus2"
+
+# Optionally, check app Id and password.
+# Use the app id and the secret values in the appsettings.json file.
+az webapp config appsettings list -g mm-bot-resource-group -n EchoBotMM --subscription 174c5021-8109-4087-a3e2-a1de20420569
+
+# Before creating a .deployment file add the the bot channel registration app id, and the password to the project `appsettings.json` file.
+
+# Create a .deployment file within the bot project folder.
+az bot prepare-deploy --lang Csharp --code-dir "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\02.echo-bot\" --proj-file-path "EchoBot.csproj"
+
+# In the project directory zip up all the files and folders. This produces an <ProjectName>.zip. file.
+
+# Deploy the bot
+az webapp deployment source config-zip --resource-group "mm-bot-resource-group" --name "EchoBotMM" --src "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\02.echo-bot\EchoBot.zip"

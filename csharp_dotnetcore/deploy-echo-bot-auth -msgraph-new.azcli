@@ -1,0 +1,62 @@
+# Deply simple echo bot
+
+# Log into the Azure portal
+az login
+
+# Set subscription
+az account set --subscription "Bot Framework Support Team"
+
+# Create an AD application.
+# This step creates a bot channels registration application.
+# Copy the app id obtained and the password you entered to use in the next step.
+az ad app create --display-name "EchoBotAuthMM" --password "@mm-authentication-bot-22499" --available-to-other-tenants
+
+# Existing resource group, existing service plan.
+az ad app create --display-name "EchoBotAuthMM2" --password "@mm-authentication-bot-22499" --available-to-other-tenants
+
+# Create a deployment from a template file, using parameters from a local JSON file.
+# You can verify that both the bot service registration and the bot service application are in the Azure portal.
+# Copy the subscription id obtained to use in the next step. This is the numneric value in "id::/subscription/numeric value/....
+# New plan
+
+# New resource group, new service plan.
+az deployment sub create --name "EchoBotAuthMM" --template-file "csharp_dotnetcore/18.bot-authentication/DeploymentTemplates/template-with-new-rg.json" --location "westus2" --parameters appId="55e6be58-bff0-4165-ae9a-34f5cdef3884" appSecret="@mm-authentication-bot-22499" botId="EchoBotAuthMM" botSku=F0 newAppServicePlanName="mm-bot-service-plan" newWebAppName="EchoBotAuthMM" groupName="mm-bot-resource-group" groupLocation="westus2" newAppServicePlanLocation="westus2"
+
+# Existing resource group, existing service plan.
+az deployment group create --resource-group "mm-bot-resource-group" --template-file "csharp_dotnetcore/18.bot-authentication/DeploymentTemplates/template-with-preexisting-rg.json" --parameters appId="514f52ad-3153-4b5e-8347-32832b4a596b" appSecret="@mm-authentication-bot-22499" botId="EchoBotAuthMM2" newWebAppName="EchoBotAuthMM2" newAppServicePlanName="mm-bot-service-plan" appServicePlanLocation="westus2" --name "EchoBotAuthMM2"
+
+# Existing resource group, new service plan.
+az deployment group create --resource-group "mm-bot-resource-group" --template-file "csharp_dotnetcore/18.bot-authentication/DeploymentTemplates/template-with-preexisting-rg.json" --parameters appId="514f52ad-3153-4b5e-8347-32832b4a596b" appSecret="@mm-authentication-bot-22499" botId="EchoBotAuthMM3" newWebAppName="EchoBotAuthMM3" existingAppServicePlan="mm-bot-service-plan-2" appServicePlanLocation="westus2" --name "EchoBotAuthMM3"
+
+# Existing plan
+# az group deployment create --name "EchoBotAuthMM" --resource-group "mm-bot-resource-group" --template-file "C:\Users\v-mimiel\aWork\GitHub\BotBuilder-Samples\samples\csharp_dotnetcore\18.bot-authentication\DeploymentTemplates\template-with-preexisting-rg.json" --parameters appId="d1face91-9e3d-44b8-bc63-f42dcd2cebee" appSecret="@mm-authentication-bot-22499" botId="EchoBotAuthMM" newWebAppName="EchoBotAuthMM" existingAppServicePlan="mm-bot-service-plan" appServicePlanLocation="westus2"
+
+# Optionally, check app Id and password.
+# Use the app id and the secret values in the appsettings.json file.
+az webapp config appsettings list -g mm-bot-resource-group -n EchoBotAuthMM --subscription 0389857f-2464-451b-ac83-5f54d565b1a7
+
+
+# ***** Authentication steps *****
+
+# Create identity provider AD v2 app.
+# From the JSON output file, copy the app Id and password to use in the next step to create the oauth connection string.
+az ad app create --display-name "EchoBotAuthMMId" --password "@mm-authentication-bot-22499" --reply-urls "https://token.botframework.com/.auth/web/redirect" --available-to-other-tenants
+
+
+# Create an OAuth connection associated with the bot channels registration app.
+# In this particular case we are creating an AD v2 connecion.
+# Notice that the value for --client-id is the bot channel registration app Id.
+# The values for ClientId and ClientSecret paarmeters are the app Id and password of
+# the identity provider AD app created in the previous step.
+az bot authsetting create -g mm-bot-resource-group -n EchoBotAuthMM -c GenericOAuth --client-id "55e6be58-bff0-4165-ae9a-34f5cdef3884" --client-secret "@mm-authentication-bot-22499" --service "Aadv2" --provider-scope-string "openid profile" --parameters ClientId="fe24244d-94b9-426e-83f6-54cb51c09c8d" ClientSecret="@mm-authentication-bot-22499" TenantId="common"
+
+# Optionally, list the connection string settings.
+az bot authsetting show --name "EchoBotAuthMM" --resource-group "mm-bot-resource-group" --setting-name "GenericOAuth"
+
+# Create a .deployment file within the bot project folder:
+az bot prepare-deploy --lang Csharp --code-dir "csharp_dotnetcore/18.bot-authentication/" --proj-file-path "AuthenticationBot.csproj"
+
+# Add the the bot channel registration app id, client secret and the name of the connection to the `appsettings.json` file.
+# In the project directory zip up all the files and folders. This produces an <name>.zip. file.
+# Deploy the bot
+az webapp deployment source config-zip --resource-group "mm-bot-resource-group" --name "EchoBotAuthMM" --src "csharp_dotnetcore/18.bot-authentication/bot.zip"

@@ -1,0 +1,52 @@
+# Deploy authentication echo bot.
+
+# Log into Azure portal.
+az login
+
+# Set subscription.
+az account set --subscription "FUSE Temporary"
+
+# Create bot channels registration AD app.
+# From the JSON output file, copy the app Id to use in the next step.
+az ad app create --display-name "EchoBotAuthPy" --password "@mm-echo-bot-auth-22499" --available-to-other-tenants
+
+# Create deployment.
+# Copy the subscription id obtained to use in the next step. This is the value in "id::/subscription/numeric value/...."
+az deployment create --name "EchoBotAuthPy" --template-file "python/18.bot-authentication/deploymentTemplates/template-with-new-rg.json" --location "westus" --parameters appId="984a98ff-bf9d-4d41-9d06-89f4cc971050" appSecret="@mm-echo-bot-auth-22499" botId="EchoBotAuthPy" botSku=F0 newAppServicePlanName="mm-python-service-plan" newWebAppName="EchoBotAuthPy" groupName="mm-python-group" groupLocation="westus" newAppServicePlanLocation="westus"
+
+# Optionally check App Id and Password
+az webapp config appsettings list -g mm-python-group -n EchoBotAuthPy --subscription 174c5021-8109-4087-a3e2-a1de20420569
+
+# Before deploying the bot you must do the following:
+# 1) Create an identity provider AD via UI.
+#   1.a) Copy and save the app Id
+#   1.b) Copy and save the password (client secret)
+
+
+# The following steps create an oauth connection for authentication.
+
+# Create identity provider AD app.
+# From the JSON output file, copy the app Id nad password to use in the next step to create the oauth connection string.
+az ad app create --display-name "EchoBotAuthPyId" --password "@mm-echo-bot-auth-22499" --reply-urls "https://token.botframework.com/.auth/web/redirect" --available-to-other-tenants
+
+# To see the actual parameter names to use in the connection string and
+# the list of the identity providers execute the following command.
+# For more information, see "az bot authsetting" at https://docs.microsoft.com/en-us/cli/azure/bot/authsetting?view=azure-cli-latest
+az bot authsetting list-providers
+
+# Create oauth connection string associated wiht the bot channels registration app.
+# In this particular case we are creating a generic oauth 2 connecion.
+# Notice the value for --client-id is the bot channel registration app Id.
+# The values for ClientId and ClientSecret paarmeters are the app Id and password of the identity provider AD app created in the previous step.
+az bot authsetting create -g mm-python-group -n EchoBotAuthPy -c GenericOauth --client-id "984a98ff-bf9d-4d41-9d06-89f4cc971050" --client-secret "@mm-echo-bot-auth-22499" --provider-scope-string "openid profile" --service "oauth2" --parameters ClientId="75046919-339e-4fe2-80be-57de286369a7" ClientSecret="@mm-echo-bot-auth-22499" AuthorizationUrl="https://login.microsoftonline.com/common/oauth2/v2.0/authorize" TokenUrl="https://login.microsoftonline.com/common/oauth2/v2.0/token" RefreshUrl="https://login.microsoftonline.com/common/oauth2/v2.0/token"
+
+# Optionally, list the connection string settings.
+az bot authsetting show --name "EchoBotAuthPy" --resource-group "mm-python-group" --setting-name "GenericOauth"
+
+
+# Add the bot channel registration app id, the password values and the oauth connection name to the config.py file.
+# In the project folder, execute pip install -r requirements.txt.
+# Zip all the files in the bot project folder and create an app.zip.
+
+# Deploy the bot.
+az webapp deployment source config-zip --resource-group "mm-python-group" --name "EchoBotAuthPy" --src "python/18.bot-authentication/app.zip"

@@ -1,0 +1,10 @@
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\bin\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.deps.json
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\bin\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.runtimeconfig.json
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\bin\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.runtimeconfig.dev.json
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\bin\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.dll
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\bin\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.pdb
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\obj\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.AssemblyInfoInputs.cache
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\obj\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.AssemblyInfo.cs
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\obj\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.dll
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\obj\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.pdb
+C:\Users\v-mimiel\aWork\GitHub\BotBuilder-MySamples\csharp_dotnetcore\experimental\Directline\Client\obj\Release\netcoreapp2.2\CSharpNetCore_DirectLine_Client.csprojAssemblyReference.cache

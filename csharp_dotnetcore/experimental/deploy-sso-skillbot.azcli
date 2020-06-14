@@ -1,0 +1,47 @@
+# Deploy authentication echo bot.
+
+# Log into Azure portal.
+az login
+
+# Set subscription.
+az account set --subscription "FUSE Temporary"
+
+# Create bot app registration.
+# From the JSON output file, copy the app Id to use in the next step.
+az ad app create --display-name "aSkillBot" --password "@mm-skill-bot-sso-22499" --available-to-other-tenants
+
+# Create the bot app service
+# New resource group and service plan.
+az deployment create --name "aSkillBot" --template-file "experimental/sso-with-skills/SkillBot/deploymentTemplates/template-with-new-rg.json"--location "westus2" --parameters appId="7cb0cea7-6caf-40da-b5ea-da0dba452b87" appSecret="@mm-skill-bot-sso-22499" botId="aSkillBot" botSku=F0 newAppServicePlanName="mm-bot-service-plan-github" newWebAppName="aSkillBot" groupName="mm-bot-resource-group" groupLocation="westus2" newAppServicePlanLocation="westus2"
+
+
+# Optionally check App Id and Password
+az webapp config appsettings list -g mm-bot-resource-group -n aSkillBot --subscription 174c5021-8109-4087-a3e2-a1de20420569
+
+# The following steps create an oauth connection for authentication.
+
+# Create identity provider AD app.
+# From the JSON output file, copy the app Id nad password to use in the next step to create the oauth connection string.
+az ad app create --display-name "aSkillBotId" --password "@mm-skill-bot-sso-22499" --reply-urls "https://token.botframework.com/.auth/web/redirect" --available-to-other-tenants
+
+# To see the actual parameter names to use in the connection string and
+# the list of the identity providers execute the following command.
+# For more information, see "az bot authsetting" at https://docs.microsoft.com/en-us/cli/azure/bot/authsetting?view=azure-cli-latest
+az bot authsetting list-providers
+
+# Create oauth connection string associated wiht the bot channels registration app.
+# In this particular case we are creating a generic oauth 2 connecion.
+# Notice the value for --client-id is the bot channel registration app Id.
+# The values for ClientId and ClientSecret paarmeters are the app Id and password of the identity provider AD app created in the previous step.
+az bot authsetting create -g mm-bot-resource-group -n aSkillBot -c SkillBotConnection --client-id "4c279e9f-4540-44b5-8dbc-b7017d7bab45" --client-secret "@mm-skill-bot-sso-22499" --service "Aadv2" --provider-scope-string "openid User.Read User.ReadBasic.All profile" --parameters ClientId="549bed2de62d221e125b" ClientSecret="40aa62fff0e07a1ade8306d19b433bda4b2b1df7"
+
+# Optionally, list the connection string settings.
+az bot authsetting show --name "aSkillBot" --resource-group "mm-bot-resource-group" --setting-name "RootBotConnection"
+
+
+# Add the bot channel registration app id, the password values and the oauth connection name to the config.py file.
+# In the project folder, execute pip install -r requirements.txt.
+# Zip all the files in the bot project folder and create an bot.zip.
+
+# Deploy the bot.
+az webapp deployment source config-zip --resource-group "mm-bot-resource-group" --name "aSkillBot" --src "experimental/sso-with-skills/SkillBot/bot.zip"

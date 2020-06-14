@@ -1,0 +1,62 @@
+# Deploy authentication github bot.
+
+# Log into Azure portal.
+az login
+
+# Set subscription.
+az account set --subscription "Bot Framework Support Team"
+
+# Create bot channels registration AD app.
+# From the JSON output file, copy the app Id to use in the next step.
+az ad app create --display-name "OAuthBotGithub" --password "@mm-oauth-bot-github-22499" --available-to-other-tenants
+
+
+# az deployment delete --name "OAuthBotGithub"
+
+# Create deployment and the (.deployment file)
+# New resource group and service plan.
+az deployment create --name "OAuthBotGithub" --template-file "csharp_dotnetcore/18.bot-authentication-github/deploymentTemplates/template-with-new-rg.json"--location "westus2" --parameters appId="43e1de4e-a1fe-49eb-8f72-0379954c66ac" appSecret="@mm-oauth-bot-github-22499" botId="OAuthBotGithub" botSku=F0 newAppServicePlanName="mm-bot-service-plan" newWebAppName="OAuthBotGithub" groupName="mm-bot-resource-group" groupLocation="westus2" newAppServicePlanLocation="westus2"
+
+# Copy the subscription id. It is the numeric value in the following line:
+# "id": "/subscriptions/0389857f-2464-451b-ac83-5f54d565b1a7/providers/Microsoft.Resources/deployments/OAuthBotGithub",
+# You use it to set the --subscription parameter in az webapp... command.
+
+# Optionally check App Id and Password
+az webapp config appsettings list -g mm-bot-resource-group -n OAuthBotGithub --subscription 0389857f-2464-451b-ac83-5f54d565b1a7
+
+
+# In the project directory zip up all the files and folders. This produces an bot.zip. file.
+# Deploy the bot
+az webapp deployment source config-zip --resource-group "mm-bot-resource-group" --name "OAuthBotGithub" --src "csharp_dotnetcore/18.bot-authentication-github/OAuthBotGitHub.zip"
+
+
+# The following steps create an oauth connection for authentication.
+
+# Create identity provider AD app.
+# From the JSON output file, copy the app Id and password to use in the next step to create the oauth connection string.
+# az ad app create --display-name "OAuthBotGithubId" --password "@mm-oauth-bot-github-22499" --reply-urls "https://token.botframework.com/.auth/web/redirect" --available-to-other-tenants
+
+# To see the actual parameter names to use in the connection string and
+# the list of the identity providers execute the following command.
+# For more information, see "az bot authsetting" at https://docs.microsoft.com/en-us/cli/azure/bot/authsetting?view=azure-cli-latest
+# az bot authsetting list-providers
+
+# Create oauth connection string associated wiht the bot channels registration app.
+# In this particular case we are creating a generic oauth 2 connecion.
+# Note the value for --client-id is the bot channel registration app Id.
+# The values for ClientId and ClientSecret parameters are the obtained by the GitHub OAuth app.
+# Not working!!
+
+az bot authsetting create -g mm-bot-resource-group -n OAuthBotGithub -c GithubConnection --client-id "43e1de4e-a1fe-49eb-8f72-0379954c66ac"" --client-secret "@mm-oauth-bot-github-22499" --service "github" --provider-scope-string "read:user user:email repo" --parameters ClientId="Iv1.830d0b5b6ddb2fd5" ClientSecret="be1a70e8b1dba95867b478736fb4d0079977ec5c"
+
+
+# az bot authsetting create -g mm-bot-resource-group -n EchoBotAuthMM -c EchoAuth --client-id "55e6be58-bff0-4165-ae9a-34f5cdef3884" --client-secret "@mm-authentication-bot-22499" --service "Aadv2" --provider-scope-string "openid profile" --parameters ClientId="fe24244d-94b9-426e-83f6-54cb51c09c8d" ClientSecret="@mm-authentication-bot-22499" TenantId="common"
+
+# Optionally, list the connection string settings.
+az bot authsetting show --name "OAuthBotGithub" --resource-group "mm-bot-resource-group" --setting-name "GithubOauth"
+
+
+# Add the bot channel registration app id, the password values and the oauth connection name to the config.py file.
+# In the project folder, execute pip install -r requirements.txt.
+# Zip all the files in the bot project folder and create an bot.zip.
+

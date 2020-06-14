@@ -1,0 +1,25 @@
+# Deploy simple echo bot
+
+# Log into the Azure portal.
+az login
+
+# Set subscription.
+az account set --subscription "FUSE Temporary"
+
+# Create bot channels registration AD app.
+# From the JSON output file, copy the app Id to use in the next step.
+az ad app create --display-name "EchoBotPy" --password "@mm-echo-bot-22499" --available-to-other-tenants
+
+# Create deployment.
+# Copy the subscription id obtained to use in the next step. This is the value in "id::/subscription/numeric value/...."
+az deployment create --name "EchoBotPy" --template-file "python/02.echo-bot/deploymentTemplates/template-with-new-rg.json" --location "westus" --parameters appId="4dc902a2-18a1-472a-9fb9-d538fcb627e3" appSecret="@mm-echo-bot-22499" botId="EchoBotPy" botSku=F0 newAppServicePlanName="mm-python-service-plan" newWebAppName="EchoBotPy" groupName="mm-python-group" groupLocation="westus" newAppServicePlanLocation="westus"
+
+# Check App Id and Password
+az webapp config appsettings list -g mm-python-group -n EchoBotPy --subscription 174c5021-8109-4087-a3e2-a1de20420569
+
+# Add the app id, the password values to the config.py file.
+# In the project directory zip up all the files and folders.
+# We have named the archive app.zip.
+
+# Deploy the bot
+az webapp deployment source config-zip --resource-group "mm-python-group" --name "EchoBotPy" --src "python/02.echo-bot/app.zip"

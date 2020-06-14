@@ -1,2 +1,2 @@
-# mm-botbuilder-samples
- my botbuilder samples
+# BotBuilder-MySamples
+ Learning Bot Framework 
