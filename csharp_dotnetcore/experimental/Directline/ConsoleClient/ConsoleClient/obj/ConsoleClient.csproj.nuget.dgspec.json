@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj": {}
+    "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj": {
+    "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj",
+        "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj",
         "projectName": "ConsoleClient",
-        "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj",
+        "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\ConsoleClient.csproj",
         "packagesPath": "C:\\Users\\v-mimiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\obj\\",
+        "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\ConsoleClient\\ConsoleClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -70,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.104\\RuntimeIdentifierGraph.json"
         }
       }
     }

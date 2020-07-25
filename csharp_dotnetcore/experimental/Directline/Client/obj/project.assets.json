@@ -5372,11 +5372,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\Client\\CSharpNetCore_DirectLine_Client.csproj",
+      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\Client\\CSharpNetCore_DirectLine_Client.csproj",
       "projectName": "CSharpNetCore_DirectLine_Client",
-      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\Client\\CSharpNetCore_DirectLine_Client.csproj",
+      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\Client\\CSharpNetCore_DirectLine_Client.csproj",
       "packagesPath": "C:\\Users\\v-mimiel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\experimental\\Directline\\Client\\obj\\",
+      "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\experimental\\Directline\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5428,7 +5428,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12430,11 +12430,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\18.bot-authentication\\AuthenticationBot.csproj",
+      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\18.bot-authentication\\AuthenticationBot.csproj",
       "projectName": "AuthenticationBot",
-      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\18.bot-authentication\\AuthenticationBot.csproj",
+      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\18.bot-authentication\\AuthenticationBot.csproj",
       "packagesPath": "C:\\Users\\v-mimiel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\BotBuilder-MySamples\\csharp_dotnetcore\\18.bot-authentication\\obj\\",
+      "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\18.bot-authentication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12496,7 +12496,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
