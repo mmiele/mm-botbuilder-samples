@@ -41,6 +41,11 @@
     // AAD app redirect URI after auth flow
     const AAD_REDIRECT_URI = 'http://localhost:5500';
 
+    const styleOptions = {
+        bubbleBackground: 'rgba(0, 0, 255, .1)',
+        bubbleFromUserBackground: 'rgba(0, 255, 0, .1)'
+    };
+
     // Calls backend API to get Direct Line token
     async function getDirectLineToken(idToken) {
       const res = await fetch('http://localhost:3000/api/direct-line-token', {
@@ -86,6 +91,7 @@
         WebChat.renderWebChat(
           {
             directLine: WebChat.createDirectLine({ token: directLineTokenResponse.token }),
+            styleOptions
           },
           document.getElementById('webchat')
         );
