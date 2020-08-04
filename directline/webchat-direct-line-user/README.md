@@ -1,4 +1,4 @@
-# Web Chat with Direct Line for specified user
+# Embed a bot in a web page using Web Chat
 
 Any bot registered with the **Bot Framework** is automatically configured for the **Web Chat channel** which includes the **Web Chat control** to allow communication with the bot. As described in the [Connect a bot to Web Chat](https://docs.microsoft.com/bot-framework/channel-connect-webchat) article, a common way to embed a bot in a website is using an *iframe* HTML element. The problem with this approach is that it exposes the Web Channel secret in the client web page. This can be acceptable during development but not in a production environment.
 
