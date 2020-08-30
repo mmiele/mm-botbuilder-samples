@@ -47,6 +47,22 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.Bot.Builder.AI.Luis": {
+              "target": "Package",
+              "version": "[4.10.2, )"
+            },
+            "Microsoft.Bot.Builder.AI.QnA": {
+              "target": "Package",
+              "version": "[4.10.2, )"
+            },
+            "Microsoft.Bot.Builder.Dialogs.Adaptive": {
+              "target": "Package",
+              "version": "[4.10.2, )"
+            },
+            "Microsoft.Bot.Builder.Dialogs.Adaptive.Testing": {
+              "target": "Package",
+              "version": "[4.10.2-preview, )"
+            },
             "Microsoft.Bot.Builder.Integration.AspNet.Core": {
               "target": "Package",
               "version": "[4.9.2, )"
