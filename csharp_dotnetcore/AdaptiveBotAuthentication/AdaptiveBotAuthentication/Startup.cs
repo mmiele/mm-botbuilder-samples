@@ -68,9 +68,6 @@ namespace AdaptiveBotAuthentication
             // The adaptive dialog that will be run by the bot.
             services.AddSingleton<RootDialog>();
 
-          
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

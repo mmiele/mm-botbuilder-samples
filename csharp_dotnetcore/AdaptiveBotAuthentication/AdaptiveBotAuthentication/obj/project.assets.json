@@ -7922,9 +7922,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication.csproj",
-      "projectName": "AdaptiveBotAuthentication",
-      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication.csproj",
+      "projectUniqueName": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication\\AdaptiveBotProject.csproj",
+      "projectName": "AdaptiveBotProject",
+      "projectPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication\\AdaptiveBotProject.csproj",
       "packagesPath": "C:\\Users\\v-mimiel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\v-mimiel\\aWork\\GitHub\\mm-botbuilder-samples\\csharp_dotnetcore\\AdaptiveBotAuthentication\\AdaptiveBotAuthentication\\obj\\",
       "projectStyle": "PackageReference",
