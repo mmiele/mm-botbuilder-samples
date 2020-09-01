@@ -1,3 +1,0 @@
-C:\Users\v-mimiel\aWork\GitHub\mm-botbuilder-samples\csharp_dotnetcore\02.echo-bot-directline-client\DirectLineClient\DirectLineClient\obj\Debug\netcoreapp2.2\DirectLineClient.csprojAssemblyReference.cache
-C:\Users\v-mimiel\aWork\GitHub\mm-botbuilder-samples\csharp_dotnetcore\02.echo-bot-directline-client\DirectLineClient\DirectLineClient\obj\Debug\netcoreapp2.2\DirectLineClient.AssemblyInfoInputs.cache
-C:\Users\v-mimiel\aWork\GitHub\mm-botbuilder-samples\csharp_dotnetcore\02.echo-bot-directline-client\DirectLineClient\DirectLineClient\obj\Debug\netcoreapp2.2\DirectLineClient.AssemblyInfo.cs
