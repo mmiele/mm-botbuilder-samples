@@ -16,6 +16,7 @@ namespace DirectLineClientNamespace
         public static async Task Run()
         {
 
+
             var endpoint = "https://<your bot app service name>.azurewebsites.net/.bot/";
             var secret = "<your bot app service direct line secret>";
 
